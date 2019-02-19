@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Firs App</string>
+    <string name="heyUser">Hey user!</string>
+    <string name="morningUser">Buenos días \u0020</string>
+    <string name="nightUser">Buena noche \u0020</string>
+    <string name="nameHere">Tu nombre aquí</string>
+    <string name="clickMe">Click me</string>
+    <string name="alertTitle">¡Atencion!</string>
+    <string name="alertMessage">¿Estás seguro que deseas continuar?</string>
+    <string name="alertPositive">Sí deseo</string>
+    <string name="alertNegative">No, jejé</string>
+    <string name="messageNegative">Más te vale 👀</string>
+    <string name="errorNameLenght">No te quieras pasar de listo 😡</string>
+</resources>
