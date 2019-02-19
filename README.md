@@ -9,3 +9,9 @@ Se hace uso de:
 * Conexión de actividades y envio de informacion a traves de ellas
 * Botones
 * Imagenes
+
+## Caracteristicas
+
+#### Android Studio 3.3.1
+#### Versión de plataforma Android: API 28
+#### Gradle 4.10.1
