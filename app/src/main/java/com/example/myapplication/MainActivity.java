@@ -9,16 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnClickMe;
-    EditText userName;
+    private Button btnClickMe;
+    private EditText userName;
+    private ConstraintLayout mainContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btnClickMe = findViewById(R.id.btnAccept);
         userName = findViewById(R.id.textUserName);
+        mainContainer = findViewById(R.id.mainContainer);
 
         btnClickMe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,41 +35,63 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void verifyUserName(){
+
         //.getText RETURN AN EDITABLE OBJECT. THATS WHY WE NEED TO CAST
         String name = userName.getText().toString();
         //VERIFY THE INPUT TEXT
         if(name.length() <1){
             //GENERATE AN USER ALERT
-            Toast.makeText(MainActivity.this, R.string.errorNameLenght, Toast.LENGTH_LONG).show();
+            Snackbar.make(mainContainer,
+                    R.string.errorNameLenght,
+                    Snackbar.LENGTH_LONG)
+                    .show();
         }else{
+            //TODO GENERATE USER ALERRT
             generateUserAlert();
         }
     }
 
     private void generateUserAlert(){
+
+
         //GENERATE AN ALERTDIALOG
         AlertDialog.Builder builder;
+
         builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle(R.string.alertTitle)
-                .setMessage(R.string.alertMessage)
-                .setPositiveButton(R.string.alertPositive, new DialogInterface.OnClickListener() {
+
+        builder.setTitle("Atención usuario")
+                .setMessage("¿Estás seguro que quieres cambiar?")
+                .setPositiveButton("Arre, va",
+                        new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //OPEN ANOTHER ACTIVITY
-                        Intent newActivity = new Intent(MainActivity.this, showUserName.class);
-                        newActivity.putExtra("userName",userName.getText().toString());
-                        startActivity(newActivity);
-                        finish();
+                       Intent newActivity = new Intent(MainActivity.this,
+                               showUserName.class);
+
+                       newActivity.putExtra("UserText",
+                               userName.getText().toString());
+                       startActivity(newActivity);
+                       finish();
+
+
                     }
                 })
-                .setNegativeButton(R.string.alertNegative, new DialogInterface.OnClickListener() {
+                .setNegativeButton("Hijole no",
+                        new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //GENERATE AN USER ALERT
-                        Toast.makeText(MainActivity.this, R.string.messageNegative, Toast.LENGTH_LONG).show();
+                        Snackbar.make(mainContainer,
+                                "Más te vale 🤭",
+                                Snackbar.LENGTH_LONG)
+                                .show();
+
                     }
                 });
+
         builder.show();
+
+
     }
 
 }
