@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         //GENERATE AN ALERTDIALOG
         AlertDialog.Builder builder;
-
         builder = new AlertDialog.Builder(MainActivity.this);
 
         builder.setTitle("Atención usuario")
